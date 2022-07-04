@@ -6,10 +6,6 @@ import org.junit.jupiter.api.Test;
 
 public class TestFormPageObject extends TestBase {
 
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.startMaximized = true;
-    }
     @Test
     void testForm() {
         registrationPage.openPage();

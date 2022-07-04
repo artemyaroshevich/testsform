@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class TestForm {
+public class TestForm extends TestBase {
 
     private SelenideElement
 
@@ -32,11 +32,6 @@ public class TestForm {
             tableTitle = $("[id=example-modal-sizes-title-lg]");
 
 
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.startMaximized = true;
-    }
 
     @Test
     public void testForm() {
