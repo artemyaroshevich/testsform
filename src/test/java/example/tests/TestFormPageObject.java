@@ -24,8 +24,6 @@ public class TestFormPageObject extends TestBase {
         registrationPage.selectCity("Panipat");
         registrationPage.clickSubmit();
         registrationPage.check();
-//        registrationPage.checkTable("Thanks for submitting the form");
-//        registrationPage.checkResultFullName("Nikolay Nikij")
-//                .checkResultEmail("nikolay@gmail.com");
+
     }
 }
