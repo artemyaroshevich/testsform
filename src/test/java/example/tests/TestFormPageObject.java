@@ -9,36 +9,23 @@ public class TestFormPageObject extends TestBase {
     @Test
     void testForm() {
         registrationPage.openPage();
-
         registrationPage.fillInFirstName("Nikolay");
-        registrationPage.fillInLastName("Nikij");
-
+        registrationPage.fillInLastName("Nikolaj");
         registrationPage.fillInEmail("nikolay@gmail.com");
-
         registrationPage.selectGender();
-
-        registrationPage.indicatePhoneNumber("323123124");
-
-
-        registrationPage.calendar.selectDate("10","10", "1990");
+        registrationPage.indicatePhoneNumber("1234567891");
+        registrationPage.filldateOfBirth("");
+//        registrationPage.calendar.selectDate("05","Jul", "2022");
         registrationPage.selectSubjects("English").selectSubjects("Math");
-
-        registrationPage.checkHobbies("Reading")
-                .checkHobbies("Music");
-
         registrationPage.uploadPicture("1.png");
-
-        registrationPage.fillInAddress("Minsk.Sckoriny");
-
+        registrationPage.checkHobby();
+        registrationPage.fillInAddress("");
         registrationPage.selectState("Haryana");
-
         registrationPage.selectCity("Panipat");
-
         registrationPage.clickSubmit();
-
-        registrationPage.checkTable("Thanks for submitting the form");
-
-        registrationPage.checkResultFullName("Nikolay Nikij")
-                .checkResultEmail("nikolay@gmail.com");
+        registrationPage.check();
+//        registrationPage.checkTable("Thanks for submitting the form");
+//        registrationPage.checkResultFullName("Nikolay Nikij")
+//                .checkResultEmail("nikolay@gmail.com");
     }
 }

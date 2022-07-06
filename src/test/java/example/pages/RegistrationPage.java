@@ -1,18 +1,17 @@
 package example.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import example.components.CalendarComponent;
+import org.openqa.selenium.Keys;
 
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
-
-    public CalendarComponent calendar = new CalendarComponent();
 
     SelenideElement
 
@@ -21,14 +20,13 @@ public class RegistrationPage {
             emailInput = $("[id=userEmail]"),
             clickRadioButton = $(".custom-control-label"),
             phoneInput = $("[id=userNumber]"),
+            dateOfBirth = $("[id=dateOfBirthInput]"),
             subjectsInput = $("#subjectsInput"),
-            hobbiesInput = $("[id=hobbiesWrapper]"),
+            hobbyCheckBox = $("#hobbies-checkbox-1"),
             addressInput = $("[id=currentAddress]"),
             selectFileButton = $("[id=uploadPicture]"),
-            stateField = $("#state"),
-            stateFromDropdown = $("#stateCity-wrapper"),
-            cityField = $("#city"),
-            cityFromDropdown = $("#stateCity-wrapper"),
+            stateField = $("#react-select-3-input"),
+            cityField = $("#react-select-4-input"),
             submitButton = $("[id=submit]"),
             resultTable = $(".table-responsive"),
             tableTitle = $("[id=example-modal-sizes-title-lg]");
@@ -39,25 +37,29 @@ public class RegistrationPage {
 
 
     public RegistrationPage fillInFirstName(String firstName) {
-        firstNameInput.setValue(firstName).shouldHave(text(firstName));
+        firstNameInput.sendKeys(firstName);
         return this;
     }
 
     public RegistrationPage fillInLastName(String lastName) {
-        lastNameInput.setValue(lastName).shouldHave(text(lastName));
+        lastNameInput.setValue(lastName);
         return this;
     }
 
     public void fillInEmail(String email) {
-        emailInput.setValue(email).shouldHave(text(email));
+        emailInput.setValue(email);
     }
-
     public void selectGender() {
         clickRadioButton.click();
     }
 
     public void indicatePhoneNumber(String phoneNumber) {
-        phoneInput.setValue(phoneNumber).shouldHave(text(phoneNumber));
+        phoneInput.setValue(phoneNumber);
+    }
+
+    public void filldateOfBirth (String birth) {
+        dateOfBirth.sendKeys(birth, Keys.ENTER);
+
     }
 
     public RegistrationPage selectSubjects(String subject) {
@@ -65,9 +67,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkHobbies(String hobby) {
-        hobbiesInput.$(byText(hobby)).click();
-        return this;
+    public void checkHobby() {
+    hobbyCheckBox.click();
+
     }
 
     public void fillInAddress(String address) {
@@ -76,34 +78,29 @@ public class RegistrationPage {
 
     public void uploadPicture(String fileName) {
         selectFileButton.uploadFile(new File("src/main/resources/picture/" + fileName));
-        selectFileButton.uploadFile();
     }
 
     public void selectState(String state) {
-        stateField.click();
-        stateFromDropdown.$(byText(state)).click();
+        stateField.sendKeys(state, Keys.ENTER);;
     }
 
     public void selectCity(String city) {
-        cityField.click();
-        cityFromDropdown.$(byText(city)).click();
+        cityField.sendKeys(city, Keys.ENTER);
     }
 
     public void clickSubmit() {
         submitButton.click();
     }
 
-    public void checkTable(String title) {
-        tableTitle.shouldHave(text(title));
-    }
+    public void check() {
+        $x("//*[contains(text(),'Nikolay Nikolaj')]").shouldBe(Condition.visible);
+        $x("//*[contains(text(),'nikolay@gmail.com')]").shouldBe(Condition.visible);
+        $x("(//*[contains(text(),'Male')])[2]").shouldBe(Condition.visible);
+        $x("(//*[contains(text(),'06 July,2022')])").shouldBe(Condition.visible);
+        $x("//*[contains(text(),'English, Maths')]").shouldBe(Condition.visible);
+        $x("(//*[contains(text(),'Sports')])[2]").shouldBe(Condition.visible);
+        $x("//*[contains(text(),'1.png')]").shouldBe(Condition.visible);
+        $x("//*[contains(text(),'Haryana Panipat')]").shouldBe(Condition.visible);
 
-    public RegistrationPage checkResultFullName(String fullName) {
-        resultTable.shouldHave(text(fullName));
-        return this;
     }
-
-    public void checkResultEmail(String email) {
-        resultTable.shouldHave(text(email));
-    }
-
 }

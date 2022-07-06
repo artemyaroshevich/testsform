@@ -14,24 +14,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestForm extends TestBase {
 
-    private SelenideElement
-
-            firstNameInput = $("[id=firstName]"),
-            lastNameInput = $("[id=lastName]"),
-            emailInput = $("[id=userEmail]"),
-            clickRadioButton = $(".custom-control-label"),
-            phoneInput = $("[id=userNumber]"),
-            subjectsInput = $("#subjectsInput"),
-            hobbiesInput = $("[id=hobbiesWrapper]"),
-            selectFileButton = $("[id=uploadPicture]"),
-            stateField = $("#state"),
-            stateFromDropdown = $("#stateCity-wrapper"),
-            cityField = $("#city"),
-            cityFromDropdown = $("#stateCity-wrapper"),
-            submitButton = $("[id=submit]"),
-            tableTitle = $("[id=example-modal-sizes-title-lg]");
-
-
 
     @Test
     public void testForm() {
@@ -70,10 +52,5 @@ public class TestForm extends TestBase {
 
         $(".table-responsive").shouldHave(text("Max Kuznecov"),
                 text("max@gmail.com"), text("Male"), text("23456678"));
-
-//        public void openPage() {
-//            openPage("https://demoqa.com/automation-practice-form");
-//        }
-
   }
 }
