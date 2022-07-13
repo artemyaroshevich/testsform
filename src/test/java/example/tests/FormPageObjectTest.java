@@ -1,10 +1,8 @@
 package example.tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class TestFormPageObject extends TestBase {
+public class FormPageObjectTest extends BaseTest {
 
     @Test
     void testForm() {
