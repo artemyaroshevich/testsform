@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-
-public class Element {
+@AllArgsConstructor
+public class TextBox {
     String fullName;
     String email;
     String currentAddress;

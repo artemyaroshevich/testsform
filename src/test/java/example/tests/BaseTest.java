@@ -1,14 +1,14 @@
 package example.tests;
 
 import com.codeborne.selenide.Configuration;
-import example.pages.ElementPage;
+import example.pages.TextBoxPage;
 import example.pages.RegistrationPage;
 import org.junit.jupiter.api.BeforeAll;
 
 public class BaseTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
-    ElementPage elementPage = new ElementPage();
+    TextBoxPage textBoxPage = new TextBoxPage();
 
     @BeforeAll
     static void beforeAll() {
